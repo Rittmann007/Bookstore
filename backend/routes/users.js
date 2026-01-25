@@ -14,7 +14,7 @@ router.post('/', async function(req, res, next) {
       throw new ApiError(400,"all fields are required")
     }
     const existedbook = await Book.findOne({
-      $or: [{title},{author}]
+      $and: [{title},{author}]
     })
   
     if (existedbook) {
@@ -42,5 +42,32 @@ router.post('/', async function(req, res, next) {
 
 
 });
+
+//get all books
+router.get('/Books',async function(req,res) {
+ try {
+   const books = await Book.find({})
+
+   return res.status(201).json(
+    new ApiResponse(200,{count: books.length , books},"books fetched successfully")
+   )
+   
+ } catch (error) {
+  throw new ApiError(400,error.message)
+ }
+})
+
+//get one book
+router.get('/Books/:id',async function(req,res) {
+  const book = await Book.findById(req.params.id)
+
+  if (!book) {
+    throw new ApiError(400,"book doesnt exists")
+  }
+
+  return res.status(201).json(
+    new ApiResponse(200,book,"book fetched successfully")
+  )
+})
 
 module.exports = router;
