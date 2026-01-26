@@ -58,7 +58,7 @@ router.get('/Books',async function(req,res) {
 })
 
 //get one book
-router.get('/Books/:id',async function(req,res) {
+router.get('/Book/:id',async function(req,res) {
   const book = await Book.findById(req.params.id)
 
   if (!book) {
@@ -67,6 +67,49 @@ router.get('/Books/:id',async function(req,res) {
 
   return res.status(201).json(
     new ApiResponse(200,book,"book fetched successfully")
+  )
+})
+
+//update a book
+router.put('/Book/:id',async function(req,res) {
+  const id = req.params.id;
+  const {title,author,publishyear} = req.body;
+
+  if (!title || !author || !publishyear) {
+    throw new ApiError(400,"all fields are required")
+  }
+
+  if (!id) {
+    throw new ApiError(400,"id is required")
+  }
+
+  const updatedbook = await Book.findByIdAndUpdate(id,req.body,{new: true})
+
+  if (!updatedbook) {
+    throw new ApiError(400,"update unsuccessfull")
+  }
+
+  return res.status(201).json(
+    new ApiResponse(200,updatedbook,"update successfully completed")
+  )
+
+})
+
+//delete a book
+router.delete('/Book/:id',async function(req,res) {
+  const id = req.params.id
+
+  if (!id) {
+    throw new ApiError(400,"id not found")
+  }
+
+  const deleted = await Book.findByIdAndDelete(id)
+
+  if (!deleted) {
+    throw new ApiError(400,"something went wrong while deleting the book")
+  }
+  return res.status(201).json(
+    new ApiResponse(200,null,"delete successfull")
   )
 })
 
