@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require("cors")
 const dotenv = require("dotenv")
 dotenv.config()
 const connectdb = require("./config/db")
@@ -12,6 +13,20 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+//middleware for handling CORS policy
+// option 1: allow all origins with default of cors(*)
+// app.use(cors())
+// option 2: alllow custom origins
+app.use(
+  cors(
+    {
+      origin: "http://localhost:3000",
+      methods: ["GET","POST","PUT","DELETE"],
+      allowedHeaders: ['Content-Type']
+    }
+  )
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
