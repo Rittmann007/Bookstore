@@ -63,3 +63,20 @@
     background: #f9fafb;
   }
 }
+
+/* Book details mobile responsiveness */
+@media (max-width: 639px) {
+  .book-detail-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .book-detail-row span:first-child {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .book-detail-row span:last-child {
+    display: block;
+    word-break: break-word;
+  }
+}
