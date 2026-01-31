@@ -1,1 +1,65 @@
 @import "tailwindcss";
+
+/* Responsive table enhancements */
+.responsive-table {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Small screens: show data labels */
+@media (max-width: 767px) {
+  .responsive-table tbody tr {
+    display: block;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .responsive-table td {
+    display: block;
+    padding: 0.75rem 1rem 0.75rem 7.5rem;
+    position: relative;
+    text-align: left;
+    word-break: break-word;
+  }
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    font-size: 0.7rem;
+    color: #6b7280; /* gray-500 */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 6rem;
+    word-break: break-word;
+  }
+  .responsive-table thead {
+    display: none;
+  }
+}
+
+/* Medium+ screens: normal table styles */
+@media (min-width: 768px) {
+  .responsive-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .responsive-table th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .responsive-table td {
+    padding: 0.75rem 1.5rem;
+  }
+  .responsive-table tbody tr:hover {
+    background: #f9fafb;
+  }
+}
