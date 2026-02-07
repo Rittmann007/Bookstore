@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Backbutton from '../utils/Backbutton'
+import {enqueueSnackbar } from 'notistack'
 
 function Createbook() {
   const [title, settitle] = useState('')
@@ -25,10 +26,11 @@ function Createbook() {
     setloading(true)
     axios.post('http://localhost:3000/users',data)
     .then(()=>{
+      enqueueSnackbar("book created successfully",{variant: "success"})
        navigate('/')
     })
     .catch((error)=>{
-      alert("an error ocurred!!")
+      enqueueSnackbar("some error occcured",{variant:"error"})
       console.log(error)
     })
     .finally(()=>{

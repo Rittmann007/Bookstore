@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 
 function Home() {
   const [books, setbooks] = useState([]);
@@ -14,6 +15,7 @@ function Home() {
         setbooks(response.data.data.books);
       })
       .catch((error) => {
+        enqueueSnackbar("something went wrong",{variant:"error"})
         console.log(error);
       })
       .finally(() => {

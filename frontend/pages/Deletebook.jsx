@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import Backbutton from '../utils/Backbutton';
+import {enqueueSnackbar} from "notistack"
 function Deletebook() {
   const [loading, setloading] = useState(false)
   const {id} = useParams();
@@ -18,10 +19,11 @@ function Deletebook() {
     setloading(true)
     axios.delete(`http://localhost:3000/users/Book/${id}`)
     .then(()=>{
+      enqueueSnackbar("book deleted successfully",{variant:"success"})
       navigate('/')
     })
     .catch((error)=>{
-      alert("something went wrong....")
+      enqueueSnackbar("an error occured",{variant:"error"})
     })
     .finally(()=>{
       setloading(false)

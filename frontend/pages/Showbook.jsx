@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Backbutton from '../utils/Backbutton'
+import { enqueueSnackbar } from 'notistack'
 
 function Showbook() {
     const [book, setbook] = useState({})
@@ -15,6 +16,7 @@ function Showbook() {
         setbook(response.data.data)
     })
     .catch((error)=>{
+      enqueueSnackbar("something went wrong",{variant:"error"})
         console.log(error)
     })
     .finally(()=>{

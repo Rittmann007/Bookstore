@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import Backbutton from '../utils/Backbutton'
+import {enqueueSnackbar} from "notistack"
 
 function Editbook() {
   const [title, settitle] = useState('')
@@ -27,7 +28,7 @@ function Editbook() {
      setpublishyear(response.data.data.publishyear)
     })
     .catch((error)=>{
-      alert("something went wrong !!")
+      enqueueSnackbar("something went wrong",{variant:"error"})
       console.log(error)
     })
     .finally(()=>{
@@ -44,10 +45,11 @@ function Editbook() {
     setloading(true)
     axios.put(`http://localhost:3000/users/Book/${id}`,data)
     .then(()=>{
+      enqueueSnackbar("book edited successfully",{variant:"success"})
        navigate('/')
     })
     .catch((error)=>{
-      alert("an error ocurred!!")
+      enqueueSnackbar("something went wrong",{variant:"error"})
       console.log(error)
     })
     .finally(()=>{
