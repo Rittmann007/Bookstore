@@ -17,7 +17,7 @@ function Deletebook() {
 
   function handleDelete() {
     setloading(true)
-    axios.delete(`http://localhost:3000/users/Book/${id}`)
+    axios.delete(`/users/Book/${id}`)
     .then(()=>{
       enqueueSnackbar("book deleted successfully",{variant:"success"})
       navigate('/')

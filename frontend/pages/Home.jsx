@@ -10,7 +10,7 @@ function Home() {
   useEffect(() => {
     setloading(true);
     axios
-      .get("http://localhost:3000/users/Books")
+      .get("/users/Books")
       .then((response) => {
         setbooks(response.data.data.books);
       })

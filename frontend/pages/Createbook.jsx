@@ -24,7 +24,7 @@ function Createbook() {
       publishyear
     }
     setloading(true)
-    axios.post('http://localhost:3000/users',data)
+    axios.post('/users',data)
     .then(()=>{
       enqueueSnackbar("book created successfully",{variant: "success"})
        navigate('/')

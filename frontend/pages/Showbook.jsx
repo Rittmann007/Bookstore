@@ -11,7 +11,7 @@ function Showbook() {
     
     useEffect(() => {
     setloading(true)
-    axios.get(`http://localhost:3000/users/Book/${id}`)
+    axios.get(`/users/Book/${id}`)
     .then((response)=>{
         setbook(response.data.data)
     })

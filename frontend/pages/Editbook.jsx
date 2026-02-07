@@ -43,7 +43,7 @@ function Editbook() {
       publishyear
     }
     setloading(true)
-    axios.put(`http://localhost:3000/users/Book/${id}`,data)
+    axios.put(`/users/Book/${id}`,data)
     .then(()=>{
       enqueueSnackbar("book edited successfully",{variant:"success"})
        navigate('/')
