@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server:{
    proxy:{
-    '/users':"http://localhost:3000"
+    '/users':"https://bookstore-backend-s2xy.onrender.com"
    }
   },
   plugins: [react(),tailwindcss()],
