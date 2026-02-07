@@ -21,7 +21,7 @@ var app = express();
 app.use(
   cors(
     {
-      origin: "mern-bookstore-six.vercel.app",
+      origin: "https://mern-bookstore-six.vercel.app",
       methods: ["GET","POST","PUT","DELETE"],
       allowedHeaders: ['Content-Type']
     }
