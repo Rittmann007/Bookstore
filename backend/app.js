@@ -16,17 +16,17 @@ var app = express();
 
 //middleware for handling CORS policy
 // option 1: allow all origins with default of cors(*)
-app.use(cors())
+// app.use(cors())
 // option 2: alllow custom origins
-// app.use(
-//   cors(
-//     {
-//       origin: "http://localhost:3000",
-//       methods: ["GET","POST","PUT","DELETE"],
-//       allowedHeaders: ['Content-Type']
-//     }
-//   )
-// )
+app.use(
+  cors(
+    {
+      origin: "mern-bookstore-six.vercel.app",
+      methods: ["GET","POST","PUT","DELETE"],
+      allowedHeaders: ['Content-Type']
+    }
+  )
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
