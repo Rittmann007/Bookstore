@@ -17,7 +17,7 @@ function Deletebook() {
 
   function handleDelete() {
     setloading(true)
-    axios.delete(`/users/Book/${id}`)
+    axios.delete(`https://bookstore-backend-s2xy.onrender.com/users/Book/${id}`)
     .then(()=>{
       enqueueSnackbar("book deleted successfully",{variant:"success"})
       navigate('/')

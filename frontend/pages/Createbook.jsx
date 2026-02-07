@@ -24,7 +24,7 @@ function Createbook() {
       publishyear
     }
     setloading(true)
-    axios.post('/users',data)
+    axios.post('https://bookstore-backend-s2xy.onrender.com/users',data)
     .then(()=>{
       enqueueSnackbar("book created successfully",{variant: "success"})
        navigate('/')

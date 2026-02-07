@@ -11,7 +11,7 @@ function Showbook() {
     
     useEffect(() => {
     setloading(true)
-    axios.get(`/users/Book/${id}`)
+    axios.get(`https://bookstore-backend-s2xy.onrender.com/users/Book/${id}`)
     .then((response)=>{
         setbook(response.data.data)
     })

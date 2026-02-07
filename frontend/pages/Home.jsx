@@ -10,7 +10,7 @@ function Home() {
   useEffect(() => {
     setloading(true);
     axios
-      .get("/users/Books")
+      .get("https://bookstore-backend-s2xy.onrender.com/users/Books")
       .then((response) => {
         setbooks(response.data.data.books);
       })

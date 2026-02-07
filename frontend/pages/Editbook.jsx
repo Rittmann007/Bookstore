@@ -43,7 +43,7 @@ function Editbook() {
       publishyear
     }
     setloading(true)
-    axios.put(`/users/Book/${id}`,data)
+    axios.put(`https://bookstore-backend-s2xy.onrender.com/users/Book/${id}`,data)
     .then(()=>{
       enqueueSnackbar("book edited successfully",{variant:"success"})
        navigate('/')
